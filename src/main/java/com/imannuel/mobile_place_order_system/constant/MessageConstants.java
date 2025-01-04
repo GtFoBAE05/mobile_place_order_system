@@ -9,7 +9,6 @@ public class MessageConstants {
 
     //customer
     public static final String CUSTOMER_NOT_FOUND = "Customer Not Found";
-    public static final String CUSTOMER_ALREADY_EXISTS = "Customer already exists";
     public static final String CUSTOMER_SUCCESS_CREATE = "Success create product type";
     public static final String CUSTOMER_SUCCESS_FIND = "Success find customer";
     public static final String CUSTOMER_SUCCESS_FETCH_ALL = "Success fetch all customers";
