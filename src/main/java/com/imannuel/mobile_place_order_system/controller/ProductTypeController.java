@@ -63,7 +63,7 @@ public class ProductTypeController {
             @PathVariable Integer id
     ) {
         productTypeService.deleteProductType(id);
-        return ResponseMapper.toCommonResponse(true, HttpStatus.NO_CONTENT,
+        return ResponseMapper.toCommonResponse(true, HttpStatus.OK,
                 MessageConstants.PRODUCT_TYPE_SUCCESS_DELETE, null);
     }
 }

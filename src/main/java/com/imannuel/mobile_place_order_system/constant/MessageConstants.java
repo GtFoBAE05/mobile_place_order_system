@@ -7,6 +7,14 @@ public class MessageConstants {
     public static final String INVALID_SORT_FORMAT = "Invalid sort format";
     public static final String INVALID_SORT_DIRECTION = "Invalid sort direction";
 
+    //customer
+    public static final String CUSTOMER_NOT_FOUND = "Customer Not Found";
+    public static final String CUSTOMER_SUCCESS_CREATE = "Success create product type";
+    public static final String CUSTOMER_SUCCESS_FIND = "Success find customer";
+    public static final String CUSTOMER_SUCCESS_FETCH_ALL = "Success fetch all customers";
+    public static final String CUSTOMER_SUCCESS_UPDATE = "Success update customer";
+    public static final String CUSTOMER_SUCCESS_DELETE = "Success delete customer";
+
     //product type
     public static final String PRODUCT_TYPE_NOT_FOUND = "Product type Not Found";
     public static final String PRODUCT_TYPE_ALREADY_EXISTS = "Product type already exists";
