@@ -46,10 +46,10 @@ public class ProductController {
             @RequestParam(required = false) String price,
             @RequestParam(required = false) String stock
     ) {
-        Page<ProductResponse> productTypesResponse = productService.getAllProductResponse
+        Page<ProductResponse> productResponse = productService.getAllProductResponse
                 (page, size, sortBy, name, productTypeId, price, stock);
         return ResponseMapper.toCommonResponseWithPagination(true, HttpStatus.OK,
-                MessageConstants.PRODUCT_SUCCESS_FETCH_ALL, productTypesResponse);
+                MessageConstants.PRODUCT_SUCCESS_FETCH_ALL, productResponse);
     }
 
     @PutMapping("/{id}")
@@ -67,7 +67,7 @@ public class ProductController {
             @PathVariable String id
     ) {
         productService.deleteProduct(id);
-        return ResponseMapper.toCommonResponse(true, HttpStatus.NO_CONTENT,
+        return ResponseMapper.toCommonResponse(true, HttpStatus.OK,
                 MessageConstants.PRODUCT_SUCCESS_DELETE, null);
     }
 }
