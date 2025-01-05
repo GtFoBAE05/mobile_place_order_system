@@ -16,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
@@ -25,6 +26,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     private final ValidationUtility validationUtility;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public ProductTypeResponse addProductType(ProductTypeRequest productTypeRequest) {
         validationUtility.validate(productTypeRequest);
 
@@ -39,18 +41,21 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public ProductType findProductTypeById(Integer id) {
         return productTypeRepository.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, MessageConstants.PRODUCT_TYPE_NOT_FOUND));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public ProductTypeResponse findProductTypeByIdResponse(Integer id) {
         ProductType productType = findProductTypeById(id);
         return ProductTypeMapper.toResponse(productType);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<ProductTypeResponse> getAllProductTypesResponse(Integer page, Integer size, String sortBy, String name) {
         Specification<ProductType> specifications = ProductTypeSpecification.getSpecification(name);
         Pageable pageable = FilteringSortingUtility.createPageable(page, size, sortBy);
@@ -61,6 +66,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public ProductTypeResponse updateProductById(Integer id, ProductTypeRequest productTypeRequest) {
         validationUtility.validate(productTypeRequest);
 
@@ -76,6 +82,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void deleteProductType(Integer id) {
         ProductType productType = findProductTypeById(id);
 

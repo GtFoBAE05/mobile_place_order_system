@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
@@ -25,6 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
     private final ValidationUtility validationUtility;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public CustomerResponse addCustomer(CustomerRequest customerRequest) {
         validationUtility.validate(customerRequest);
 
@@ -36,18 +38,21 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Customer findCustomerById(String id) {
         return customerRepository.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, MessageConstants.CUSTOMER_NOT_FOUND));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public CustomerResponse findCustomerByIdResponse(String id) {
         Customer customer = findCustomerById(id);
         return CustomerMapper.toResponse(customer);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<CustomerResponse> getAllCustomerResponse(Integer page, Integer size, String sortBy) {
         Pageable pageable = FilteringSortingUtility.createPageable(page, size, sortBy);
 
@@ -57,6 +62,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public CustomerResponse updateCustomerById(String id, CustomerRequest customerRequest) {
         validationUtility.validate(customerRequest);
 
@@ -69,6 +75,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void deleteCustomer(String id) {
         Customer customer = findCustomerById(id);
         customerRepository.delete(customer);
