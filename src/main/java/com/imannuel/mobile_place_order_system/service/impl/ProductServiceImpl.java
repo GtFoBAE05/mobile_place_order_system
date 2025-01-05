@@ -77,6 +77,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public void hasEnoughStock(String productId, Integer quantity) {
+        Product product = findProductById(productId);
+        if (product.getStock() < quantity) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not enough product stock");
+        }
+    }
+
+    @Override
     public void deleteProduct(String id) {
         Product product = findProductById(id);
         productRepository.delete(product);
