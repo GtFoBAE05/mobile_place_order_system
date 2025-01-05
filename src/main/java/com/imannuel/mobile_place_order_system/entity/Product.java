@@ -16,13 +16,16 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
+    @Column(nullable = false)
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "product_type_id")
+    @JoinColumn(name = "product_type_id", nullable = false)
     private ProductType productType;
 
+    @Column(nullable = false)
     private Integer stock;
 
+    @Column(nullable = false)
     private Long price;
 }
