@@ -13,7 +13,6 @@ public class MessageConstants {
     public static final String CUSTOMER_SUCCESS_FIND = "Success find customer";
     public static final String CUSTOMER_SUCCESS_FETCH_ALL = "Success fetch all customers";
     public static final String CUSTOMER_SUCCESS_UPDATE = "Success update customer";
-    public static final String CUSTOMER_SUCCESS_DELETE = "Success delete customer";
 
     //product type
     public static final String PRODUCT_TYPE_NOT_FOUND = "Product type not found";

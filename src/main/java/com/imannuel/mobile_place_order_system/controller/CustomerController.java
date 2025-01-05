@@ -57,13 +57,4 @@ public class CustomerController {
         return ResponseMapper.toCommonResponse(true, HttpStatus.OK,
                 MessageConstants.CUSTOMER_SUCCESS_UPDATE, customerResponse);
     }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCustomer(
-            @PathVariable String id
-    ) {
-        customerService.deleteCustomer(id);
-        return ResponseMapper.toCommonResponse(true, HttpStatus.OK,
-                MessageConstants.CUSTOMER_SUCCESS_DELETE, null);
-    }
 }
