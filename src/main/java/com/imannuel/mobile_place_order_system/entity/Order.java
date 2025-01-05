@@ -7,21 +7,24 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Table(name = DatabaseConstants.CART_TABLE)
+@Table(name = DatabaseConstants.ORDER_TABLE)
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Cart {
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    @OneToMany(mappedBy = "cart")
-    private List<CartItem> cartItems;
+    @Column(name = "grand_total", nullable = false)
+    private Long grandTotal;
+
+    @OneToMany(mappedBy = "order")
+    private List<OrderItem> orderItems;
 }
