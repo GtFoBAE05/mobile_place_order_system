@@ -33,6 +33,7 @@ public class MessageConstants {
     public static final String PRODUCT_SUCCESS_DELETE = "Success delete product";
 
     //cart
+    public static final String CART_ITEM_CUSTOMER_MISMATCH = "Mismatch between customer and cart item";
     public static final String CART_NOT_DEFINED = "Customer cart not defined";
     public static final String CART_NOT_FOUND = "Cart not found";
     public static final String CART_ITEM_NOT_FOUND = "Cart item not found";
@@ -41,4 +42,11 @@ public class MessageConstants {
     public static final String CART_SUCCESS_UPDATE_ITEM = "Success update cart item";
     public static final String CART_SUCCESS_CLEAR = "Success clear all cart item";
     public static final String CART_SUCCESS_REMOVE_ITEM = "Success remove cart item";
+
+    //order
+    public static final String ORDER_NOT_FOUND = "Order not found";
+    public static final String ORDER_SUCCESS_CREATE = "Success create order";
+    public static final String ORDER_SUCCESS_FIND = "Success find order";
+    public static final String ORDER_SUCCESS_FETCH_ALL = "Success fetch all orders";
+
 }
