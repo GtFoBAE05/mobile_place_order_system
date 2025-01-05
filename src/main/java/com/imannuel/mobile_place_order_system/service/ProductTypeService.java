@@ -8,9 +8,9 @@ import org.springframework.data.domain.Page;
 public interface ProductTypeService {
     ProductTypeResponse addProductType(ProductTypeRequest productTypeRequest);
 
-    ProductType findProductTypeById(Integer id);
+    ProductType findActiveProductTypeById(Integer id);
 
-    ProductTypeResponse findProductTypeByIdResponse(Integer id);
+    ProductTypeResponse findActiveProductTypeByIdResponse(Integer id);
 
     Page<ProductTypeResponse> getAllProductTypesResponse(Integer page, Integer size, String sortBy, String name);
 

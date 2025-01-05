@@ -19,6 +19,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class ProductTypeServiceImpl implements ProductTypeService {
@@ -32,7 +34,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 
         ProductType productType = ProductTypeMapper.toEntity(productTypeRequest);
 
-        if (productTypeRepository.existsByNameEqualsIgnoreCase(productTypeRequest.getName())) {
+        if (productTypeRepository.existsByDeletedFalseAndNameEqualsIgnoreCase(productTypeRequest.getName())) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, MessageConstants.PRODUCT_TYPE_ALREADY_EXISTS);
         }
         productTypeRepository.saveAndFlush(productType);
@@ -42,15 +44,15 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 
     @Override
     @Transactional(readOnly = true)
-    public ProductType findProductTypeById(Integer id) {
-        return productTypeRepository.findById(id).orElseThrow(() ->
+    public ProductType findActiveProductTypeById(Integer id) {
+        return productTypeRepository.findByIdAndDeletedFalse(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, MessageConstants.PRODUCT_TYPE_NOT_FOUND));
     }
 
     @Override
     @Transactional(readOnly = true)
-    public ProductTypeResponse findProductTypeByIdResponse(Integer id) {
-        ProductType productType = findProductTypeById(id);
+    public ProductTypeResponse findActiveProductTypeByIdResponse(Integer id) {
+        ProductType productType = findActiveProductTypeById(id);
         return ProductTypeMapper.toResponse(productType);
     }
 
@@ -70,9 +72,9 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     public ProductTypeResponse updateProductById(Integer id, ProductTypeRequest productTypeRequest) {
         validationUtility.validate(productTypeRequest);
 
-        ProductType productType = findProductTypeById(id);
+        ProductType productType = findActiveProductTypeById(id);
 
-        if (productTypeRepository.existsByNameEqualsIgnoreCase(productTypeRequest.getName())) {
+        if (productTypeRepository.existsByDeletedFalseAndNameEqualsIgnoreCase(productTypeRequest.getName())) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, MessageConstants.PRODUCT_TYPE_ALREADY_EXISTS);
         }
         productType.setName(productTypeRequest.getName());
@@ -84,8 +86,17 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void deleteProductType(Integer id) {
-        ProductType productType = findProductTypeById(id);
+        ProductType productType = findActiveProductTypeById(id);
 
-        productTypeRepository.delete(productType);
+        Specification<ProductType> specification = ProductTypeSpecification.hasProduct(id);
+        boolean hasProducts = productTypeRepository.exists(specification);
+
+        if (hasProducts) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Product type is used by product");
+        }
+
+        productType.setDeleted(true);
+        productType.setDeletedAt(LocalDateTime.now());
+        productTypeRepository.save(productType);
     }
 }

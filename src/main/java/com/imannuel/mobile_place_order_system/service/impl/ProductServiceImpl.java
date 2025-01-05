@@ -21,6 +21,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
@@ -33,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductResponse addProduct(ProductRequest productRequest) {
         validationUtility.validate(productRequest);
 
-        ProductType productType = productTypeService.findProductTypeById(productRequest.getProductTypeId());
+        ProductType productType = productTypeService.findActiveProductTypeById(productRequest.getProductTypeId());
         Product product = ProductMapper.toEntity(productRequest, productType);
         productRepository.saveAndFlush(product);
 
@@ -42,15 +44,15 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional(readOnly = true)
-    public Product findProductById(String id) {
-        return productRepository.findById(id).orElseThrow(() ->
+    public Product findActiveProductById(String id) {
+        return productRepository.findByIdAndDeletedFalse(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, MessageConstants.PRODUCT_NOT_FOUND));
     }
 
     @Override
     @Transactional(readOnly = true)
-    public ProductResponse findProductByIdResponse(String id) {
-        Product product = findProductById(id);
+    public ProductResponse findActiveProductByIdResponse(String id) {
+        Product product = findActiveProductById(id);
         return ProductMapper.toResponse(product);
     }
 
@@ -70,8 +72,8 @@ public class ProductServiceImpl implements ProductService {
     public ProductResponse updateProductById(String id, ProductRequest productRequest) {
         validationUtility.validate(productRequest);
 
-        Product product = findProductById(id);
-        ProductType productType = productTypeService.findProductTypeById(productRequest.getProductTypeId());
+        Product product = findActiveProductById(id);
+        ProductType productType = productTypeService.findActiveProductTypeById(productRequest.getProductTypeId());
 
         product.setName(productRequest.getName());
         product.setStock(productRequest.getStock());
@@ -85,7 +87,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional(readOnly = true)
     public void hasEnoughStock(String productId, Integer quantity) {
-        Product product = findProductById(productId);
+        Product product = findActiveProductById(productId);
         if (product.getStock() < quantity) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format("Not enough product stock for product: %s", product.getName()));
         }
@@ -94,7 +96,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void deleteProduct(String id) {
-        Product product = findProductById(id);
-        productRepository.delete(product);
+        Product product = findActiveProductById(id);
+
+        product.setDeleted(true);
+        product.setDeletedAt(LocalDateTime.now());
+        productRepository.save(product);
     }
 }

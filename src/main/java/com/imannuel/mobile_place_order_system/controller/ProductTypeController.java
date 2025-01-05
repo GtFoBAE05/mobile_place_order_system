@@ -31,7 +31,7 @@ public class ProductTypeController {
     public ResponseEntity<?> findProductTypeById(
             @PathVariable Integer id
     ) {
-        ProductTypeResponse productTypeResponse = productTypeService.findProductTypeByIdResponse(id);
+        ProductTypeResponse productTypeResponse = productTypeService.findActiveProductTypeByIdResponse(id);
         return ResponseMapper.toCommonResponse(true, HttpStatus.OK,
                 MessageConstants.PRODUCT_TYPE_SUCCESS_FIND, productTypeResponse);
     }
