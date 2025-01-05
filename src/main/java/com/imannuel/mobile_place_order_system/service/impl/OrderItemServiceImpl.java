@@ -29,6 +29,9 @@ public class OrderItemServiceImpl implements OrderItemService {
         order.getOrderItems().add(orderItem);
         order.setGrandTotal(order.getGrandTotal() + orderItem.getTotalPrice());
 
+        cartItemService.deleteCartItem(cartItem.getId());
+        productService.reduceProductStock(cartItem.getProduct().getId(), cartItem.getQuantity());
+
         orderItemRepository.saveAndFlush(orderItem);
     }
 
@@ -38,7 +41,6 @@ public class OrderItemServiceImpl implements OrderItemService {
         for (String id : cartItemId) {
             CartItem cartItem = cartItemService.findCartItemByIdAndCustomer(id, order.getCustomer());
             addOrderItem(order, cartItem);
-            cartItemService.deleteCartItem(id);
         }
     }
 
