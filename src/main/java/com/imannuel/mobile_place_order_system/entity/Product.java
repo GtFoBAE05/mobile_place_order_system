@@ -4,6 +4,8 @@ import com.imannuel.mobile_place_order_system.constant.DatabaseConstants;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = DatabaseConstants.PRODUCT_TABLE)
 @Getter
@@ -28,4 +30,9 @@ public class Product {
 
     @Column(nullable = false)
     private Long price;
+
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
+    private boolean deleted;
+
+    private LocalDateTime deletedAt;
 }

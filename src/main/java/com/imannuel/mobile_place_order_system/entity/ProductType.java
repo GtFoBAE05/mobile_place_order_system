@@ -4,6 +4,9 @@ import com.imannuel.mobile_place_order_system.constant.DatabaseConstants;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Entity
 @Table(name = DatabaseConstants.PRODUCT_TYPE_TABLE)
 @Getter
@@ -18,4 +21,12 @@ public class ProductType {
 
     @Column(nullable = false)
     private String name;
+
+    @OneToMany(mappedBy = "productType")
+    private List<Product> productList;
+
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
+    private boolean deleted;
+
+    private LocalDateTime deletedAt;
 }

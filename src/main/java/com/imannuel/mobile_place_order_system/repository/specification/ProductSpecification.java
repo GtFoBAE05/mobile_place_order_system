@@ -14,6 +14,7 @@ import java.util.List;
 public class ProductSpecification {
     public static Specification<Product> getSpecification(String name, Integer productTypeId, String price, String stock) {
         Specification<Product> specifications = Specification.where(null);
+        specifications = specifications.and(ProductSpecification.hasDeletedFalse());
 
         if (StringUtils.hasText(name)) {
             specifications = specifications.and(ProductSpecification.hasName(name));
@@ -45,6 +46,11 @@ public class ProductSpecification {
                 criteriaBuilder.like(criteriaBuilder.lower(root.get("name")), name.toLowerCase() + "%");
     }
 
+    private static Specification<Product> hasDeletedFalse() {
+        return (root, query, criteriaBuilder) ->
+                criteriaBuilder.isFalse(root.get("deleted"));
+    }
+
     private static Specification<Product> hasProductTypeId(Integer productTypeId) {
         return (root, query, criteriaBuilder) ->
                 criteriaBuilder.equal(root.get("productType").get("id"), productTypeId);
@@ -58,7 +64,8 @@ public class ProductSpecification {
                     case "gte" -> criteriaBuilder.greaterThanOrEqualTo(root.get(field), Integer.parseInt(value));
                     case "lt" -> criteriaBuilder.lessThan(root.get(field), Integer.parseInt(value));
                     case "lte" -> criteriaBuilder.lessThanOrEqualTo(root.get(field), Integer.parseInt(value));
-                    default -> throw new ResponseStatusException(HttpStatus.BAD_REQUEST, MessageConstants.INVALID_OPERATOR_TYPE);
+                    default ->
+                            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, MessageConstants.INVALID_OPERATOR_TYPE);
                 };
     }
 
@@ -70,7 +77,8 @@ public class ProductSpecification {
                     case "gte" -> criteriaBuilder.greaterThanOrEqualTo(root.get(field), Long.parseLong(value));
                     case "lt" -> criteriaBuilder.lessThan(root.get(field), Long.parseLong(value));
                     case "lte" -> criteriaBuilder.lessThanOrEqualTo(root.get(field), Long.parseLong(value));
-                    default -> throw new ResponseStatusException(HttpStatus.BAD_REQUEST, MessageConstants.INVALID_OPERATOR_TYPE);
+                    default ->
+                            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, MessageConstants.INVALID_OPERATOR_TYPE);
                 };
     }
 }

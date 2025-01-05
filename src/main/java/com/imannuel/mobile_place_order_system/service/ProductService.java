@@ -8,9 +8,9 @@ import org.springframework.data.domain.Page;
 public interface ProductService {
     ProductResponse addProduct(ProductRequest productRequest);
 
-    Product findProductById(String id);
+    Product findActiveProductById(String id);
 
-    ProductResponse findProductByIdResponse(String id);
+    ProductResponse findActiveProductByIdResponse(String id);
 
     Page<ProductResponse> getAllProductResponse(Integer page, Integer size, String sortBy, String name,
                                                 Integer productTypeId, String price, String stock);

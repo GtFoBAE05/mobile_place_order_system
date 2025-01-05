@@ -26,7 +26,7 @@ public class CartItemServiceImpl implements CartItemService {
     @Transactional(rollbackFor = Exception.class)
     public void addItemToCart(Cart cart, String productId, Integer quantity) {
         productService.hasEnoughStock(productId, quantity);
-        Product product = productService.findProductById(productId);
+        Product product = productService.findActiveProductById(productId);
 
         if (cartItemRepository.existsByCartAndProduct(cart, product)) {
             updateCartItem(cart, productId, quantity);
@@ -61,7 +61,7 @@ public class CartItemServiceImpl implements CartItemService {
     @Override
     @Transactional(readOnly = true)
     public CartItem findCartItemByCartAndProduct(Cart cart, String productId) {
-        Product product = productService.findProductById(productId);
+        Product product = productService.findActiveProductById(productId);
 
         return cartItemRepository.findByCartAndProduct(cart, product).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, MessageConstants.CART_NOT_FOUND)
