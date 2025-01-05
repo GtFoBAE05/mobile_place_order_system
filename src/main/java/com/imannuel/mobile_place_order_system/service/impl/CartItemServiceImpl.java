@@ -10,6 +10,7 @@ import com.imannuel.mobile_place_order_system.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -21,8 +22,8 @@ public class CartItemServiceImpl implements CartItemService {
     private final ProductService productService;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void addItemToCart(Cart cart, String productId, Integer quantity) {
-
         productService.hasEnoughStock(productId, quantity);
         Product product = productService.findProductById(productId);
 
@@ -40,14 +41,15 @@ public class CartItemServiceImpl implements CartItemService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public CartItem findCartItemByIdAndCart(String cartItemId, Cart cart) {
         return cartItemRepository.findByIdAndCart(cartItemId, cart).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, MessageConstants.CART_ITEM_NOT_FOUND)
         );
-
     }
 
     @Override
+    @Transactional(readOnly = true)
     public CartItem findCartItemByCartAndProduct(Cart cart, String productId) {
         Product product = productService.findProductById(productId);
 
@@ -57,6 +59,7 @@ public class CartItemServiceImpl implements CartItemService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void updateCartItem(Cart cart, String productId, Integer quantity) {
         CartItem cartItem = findCartItemByCartAndProduct(cart, productId);
         cartItem.setQuantity(quantity);
@@ -64,12 +67,14 @@ public class CartItemServiceImpl implements CartItemService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void removeItemFromCart(String cartItemId, Cart cart) {
         CartItem cartItem = findCartItemByIdAndCart(cartItemId, cart);
         cartItemRepository.delete(cartItem);
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void clearAllItemFromCart(Cart cart) {
         List<CartItem> cartItems = cartItemRepository.findByCart(cart);
         cartItemRepository.deleteAll(cartItems);

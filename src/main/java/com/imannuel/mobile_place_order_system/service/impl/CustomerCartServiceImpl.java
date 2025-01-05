@@ -12,6 +12,7 @@ import com.imannuel.mobile_place_order_system.service.CustomerService;
 import com.imannuel.mobile_place_order_system.utility.ValidationUtility;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +23,7 @@ public class CustomerCartServiceImpl implements CustomerCartService {
     private final ValidationUtility validationUtility;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public CartResponse addCartItem(String customerId, CartRequest cartRequest) {
         validationUtility.validate(cartRequest);
 
@@ -33,13 +35,16 @@ public class CustomerCartServiceImpl implements CustomerCartService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public CartResponse getCustomerCart(String customerId) {
         Customer customer = customerService.findCustomerById(customerId);
         Cart cart = cartService.getCart(customer);
+
         return CartMapper.toResponse(cart);
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public CartResponse updateCartItem(String customerId, CartRequest cartRequest) {
         Customer customer = customerService.findCustomerById(customerId);
         Cart cart = cartService.getCart(customer);
@@ -49,6 +54,7 @@ public class CustomerCartServiceImpl implements CustomerCartService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void clearAllCartItem(String customerId) {
         Customer customer = customerService.findCustomerById(customerId);
         Cart cart = cartService.getCart(customer);
@@ -56,6 +62,7 @@ public class CustomerCartServiceImpl implements CustomerCartService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public CartResponse removeItemFromCart(String customerId, String cartItemId) {
         Customer customer = customerService.findCustomerById(customerId);
         Cart cart = cartService.getCart(customer);

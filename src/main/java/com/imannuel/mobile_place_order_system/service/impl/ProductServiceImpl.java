@@ -18,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
@@ -28,6 +29,7 @@ public class ProductServiceImpl implements ProductService {
     private final ValidationUtility validationUtility;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public ProductResponse addProduct(ProductRequest productRequest) {
         validationUtility.validate(productRequest);
 
@@ -39,18 +41,21 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Product findProductById(String id) {
         return productRepository.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, MessageConstants.PRODUCT_NOT_FOUND));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public ProductResponse findProductByIdResponse(String id) {
         Product product = findProductById(id);
         return ProductMapper.toResponse(product);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<ProductResponse> getAllProductResponse(Integer page, Integer size, String sortBy, String name, Integer productTypeId, String price, String stock) {
         Specification<Product> specifications = ProductSpecification.getSpecification(name, productTypeId, price, stock);
         Pageable pageable = FilteringSortingUtility.createPageable(page, size, sortBy);
@@ -61,6 +66,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public ProductResponse updateProductById(String id, ProductRequest productRequest) {
         validationUtility.validate(productRequest);
 
@@ -77,6 +83,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public void hasEnoughStock(String productId, Integer quantity) {
         Product product = findProductById(productId);
         if (product.getStock() < quantity) {
@@ -85,6 +92,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void deleteProduct(String id) {
         Product product = findProductById(id);
         productRepository.delete(product);
