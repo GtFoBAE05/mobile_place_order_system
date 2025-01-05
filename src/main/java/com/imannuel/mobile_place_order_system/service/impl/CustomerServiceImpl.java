@@ -6,6 +6,7 @@ import com.imannuel.mobile_place_order_system.dto.request.customer.CustomerReque
 import com.imannuel.mobile_place_order_system.dto.response.customer.CustomerResponse;
 import com.imannuel.mobile_place_order_system.entity.Customer;
 import com.imannuel.mobile_place_order_system.repository.CustomerRepository;
+import com.imannuel.mobile_place_order_system.service.CartService;
 import com.imannuel.mobile_place_order_system.service.CustomerService;
 import com.imannuel.mobile_place_order_system.utility.FilteringSortingUtility;
 import com.imannuel.mobile_place_order_system.utility.ValidationUtility;
@@ -20,6 +21,7 @@ import org.springframework.web.server.ResponseStatusException;
 @RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
+    private final CartService cartService;
     private final ValidationUtility validationUtility;
 
     @Override
@@ -28,6 +30,7 @@ public class CustomerServiceImpl implements CustomerService {
 
         Customer customer = CustomerMapper.toEntity(customerRequest);
         customerRepository.saveAndFlush(customer);
+        cartService.createCustomerCart(customer);
 
         return CustomerMapper.toResponse(customer);
     }
@@ -70,6 +73,4 @@ public class CustomerServiceImpl implements CustomerService {
         Customer customer = findCustomerById(id);
         customerRepository.delete(customer);
     }
-
-
 }
