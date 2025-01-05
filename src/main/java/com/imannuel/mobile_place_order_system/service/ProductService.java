@@ -19,5 +19,7 @@ public interface ProductService {
 
     void hasEnoughStock(String productId, Integer quantity);
 
+    void reduceProductStock(String productId, Integer quantity);
+
     void deleteProduct(String id);
 }
