@@ -96,7 +96,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void reduceProductStock(String productId, Integer quantity) {
-        Product product = findProductById(productId);
+        Product product = findActiveProductById(productId);
 
         product.setStock(product.getStock() - quantity);
         productRepository.save(product);

@@ -17,6 +17,7 @@ public class MessageConstants {
     //product type
     public static final String PRODUCT_TYPE_NOT_FOUND = "Product type not found";
     public static final String PRODUCT_TYPE_ALREADY_EXISTS = "Product type already exists";
+    public static final String PRODUCT_TYPE_IS_USED_BY_PRODUCT =  "Product type is used by product";
     public static final String PRODUCT_TYPE_SUCCESS_CREATE = "Success create product type";
     public static final String PRODUCT_TYPE_SUCCESS_FIND = "Success find product type";
     public static final String PRODUCT_TYPE_SUCCESS_FETCH_ALL = "Success fetch all product types";

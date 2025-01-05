@@ -92,7 +92,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
         boolean hasProducts = productTypeRepository.exists(specification);
 
         if (hasProducts) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Product type is used by product");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, MessageConstants.PRODUCT_TYPE_IS_USED_BY_PRODUCT);
         }
 
         productType.setDeleted(true);
