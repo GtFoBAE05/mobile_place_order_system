@@ -87,7 +87,7 @@ public class ProductServiceImpl implements ProductService {
     public void hasEnoughStock(String productId, Integer quantity) {
         Product product = findProductById(productId);
         if (product.getStock() < quantity) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not enough product stock");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format("Not enough product stock for product: %s", product.getName()));
         }
     }
 
