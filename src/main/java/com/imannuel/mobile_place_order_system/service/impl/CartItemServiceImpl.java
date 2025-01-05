@@ -3,6 +3,7 @@ package com.imannuel.mobile_place_order_system.service.impl;
 import com.imannuel.mobile_place_order_system.constant.MessageConstants;
 import com.imannuel.mobile_place_order_system.entity.Cart;
 import com.imannuel.mobile_place_order_system.entity.CartItem;
+import com.imannuel.mobile_place_order_system.entity.Customer;
 import com.imannuel.mobile_place_order_system.entity.Product;
 import com.imannuel.mobile_place_order_system.repository.CartItemRepository;
 import com.imannuel.mobile_place_order_system.service.CartItemService;
@@ -32,12 +33,21 @@ public class CartItemServiceImpl implements CartItemService {
             return;
         }
 
-        CartItem cartItem = CartItem.builder()
-                .cart(cart)
-                .product(product)
-                .quantity(quantity)
-                .build();
-        cartItemRepository.saveAndFlush(cartItem);
+        addNewCartItem(cart, product, quantity);
+    }
+
+    @Override
+    public CartItem findCartItemById(String cartItemId) {
+        return cartItemRepository.findById(cartItemId).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, MessageConstants.CART_ITEM_NOT_FOUND)
+        );
+    }
+
+    @Override
+    public CartItem findCartItemByIdAndCustomer(String cartItemId, Customer customer) {
+        return cartItemRepository.findByIdAndCart_Customer(cartItemId, customer).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, MessageConstants.CART_ITEM_CUSTOMER_MISMATCH)
+        );
     }
 
     @Override
@@ -78,5 +88,20 @@ public class CartItemServiceImpl implements CartItemService {
     public void clearAllItemFromCart(Cart cart) {
         List<CartItem> cartItems = cartItemRepository.findByCart(cart);
         cartItemRepository.deleteAll(cartItems);
+    }
+
+    @Override
+    public void deleteCartItem(String cartItemId) {
+        CartItem cartItem = findCartItemById(cartItemId);
+        cartItemRepository.delete(cartItem);
+    }
+
+    private void addNewCartItem(Cart cart, Product product, Integer quantity) {
+        CartItem cartItem = CartItem.builder()
+                .cart(cart)
+                .product(product)
+                .quantity(quantity)
+                .build();
+        cartItemRepository.saveAndFlush(cartItem);
     }
 }

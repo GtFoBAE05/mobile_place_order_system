@@ -15,6 +15,4 @@ public interface CustomerService {
     Page<CustomerResponse> getAllCustomerResponse(Integer page, Integer size, String sortBy);
 
     CustomerResponse updateCustomerById(String id, CustomerRequest customerRequest);
-
-    void deleteCustomer(String id);
 }

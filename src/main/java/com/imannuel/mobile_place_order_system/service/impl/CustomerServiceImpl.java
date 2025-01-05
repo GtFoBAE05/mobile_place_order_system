@@ -73,11 +73,4 @@ public class CustomerServiceImpl implements CustomerService {
 
         return CustomerMapper.toResponse(customer);
     }
-
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public void deleteCustomer(String id) {
-        Customer customer = findCustomerById(id);
-        customerRepository.delete(customer);
-    }
 }
