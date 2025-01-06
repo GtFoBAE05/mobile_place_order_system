@@ -18,4 +18,6 @@ public class OrderResponse {
     private Long grandTotal;
 
     private List<OrderItemResponse> items;
+
+    private String orderDate;
 }

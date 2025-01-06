@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Cart {
+public class Cart extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;

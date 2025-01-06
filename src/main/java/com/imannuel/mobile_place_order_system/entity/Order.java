@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Order {
+public class Order extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;

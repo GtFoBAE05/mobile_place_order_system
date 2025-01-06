@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Customer {
+public class Customer extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
