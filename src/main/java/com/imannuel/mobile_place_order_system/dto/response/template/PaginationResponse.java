@@ -9,7 +9,10 @@ import lombok.Setter;
 @Builder
 public class PaginationResponse {
     private Integer currentPage;
+
     private Integer size;
+
     private Integer totalPages;
+
     private Long totalResults;
 }

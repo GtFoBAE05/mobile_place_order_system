@@ -34,6 +34,7 @@ public class MessageConstants {
 
     //cart
     public static final String CART_ITEM_CUSTOMER_MISMATCH = "Mismatch between customer and cart item";
+    public static final String CART_ITEM_ALREADY_EMPTY = "Cart item already empty";
     public static final String CART_NOT_DEFINED = "Customer cart not defined";
     public static final String CART_NOT_FOUND = "Cart not found";
     public static final String CART_ITEM_NOT_FOUND = "Cart item not found";

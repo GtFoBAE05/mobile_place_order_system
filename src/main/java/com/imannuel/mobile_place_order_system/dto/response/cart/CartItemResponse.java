@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Builder
 public class CartItemResponse {
-    private String id;
+    private String cartItemId;
 
     private String productId;
 

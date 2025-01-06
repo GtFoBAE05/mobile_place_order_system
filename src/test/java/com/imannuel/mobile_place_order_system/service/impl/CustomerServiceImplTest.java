@@ -97,7 +97,7 @@ class CustomerServiceImplTest {
 
         CustomerResponse customerResponse = customerService.findCustomerByIdResponse(customerId);
 
-        assertEquals(expectedCustomer.getId(), customerResponse.getId());
+        assertEquals(expectedCustomer.getId(), customerResponse.getCustomerId());
         assertEquals(expectedCustomer.getName(), customerResponse.getName());
         assertEquals(expectedCustomer.getAddress(), customerResponse.getAddress());
         Mockito.verify(customerRepository, Mockito.times(1)).findById(Mockito.anyString());

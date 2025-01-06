@@ -13,8 +13,8 @@ public class ProductTypeMapper {
 
     public static ProductTypeResponse toResponse(ProductType productType){
         return ProductTypeResponse.builder()
-                .id(productType.getId())
-                .name(productType.getName())
+                .productTypeId(productType.getId())
+                .productTypeName(productType.getName())
                 .build();
     }
 }

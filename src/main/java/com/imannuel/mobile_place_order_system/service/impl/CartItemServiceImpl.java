@@ -72,6 +72,7 @@ public class CartItemServiceImpl implements CartItemService {
     @Transactional(rollbackFor = Exception.class)
     public void updateCartItem(Cart cart, String productId, Integer quantity) {
         CartItem cartItem = findCartItemByCartAndProduct(cart, productId);
+        productService.hasEnoughStock(productId, quantity);
         cartItem.setQuantity(quantity);
         cartItemRepository.saveAndFlush(cartItem);
     }
@@ -87,6 +88,11 @@ public class CartItemServiceImpl implements CartItemService {
     @Transactional(rollbackFor = Exception.class)
     public void clearAllItemFromCart(Cart cart) {
         List<CartItem> cartItems = cartItemRepository.findByCart(cart);
+
+        if (cartItems.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, MessageConstants.CART_ITEM_ALREADY_EMPTY);
+        }
+
         cartItemRepository.deleteAll(cartItems);
     }
 

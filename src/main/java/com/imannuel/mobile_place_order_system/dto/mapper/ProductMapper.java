@@ -17,8 +17,8 @@ public class ProductMapper {
 
     public static ProductResponse toResponse(Product product) {
         return ProductResponse.builder()
-                .id(product.getId())
-                .name(product.getName())
+                .productId(product.getId())
+                .productName(product.getName())
                 .productType(ProductTypeMapper.toResponse(product.getProductType()))
                 .price(product.getPrice())
                 .stock(product.getStock())
