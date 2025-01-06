@@ -1,0 +1,2160 @@
+{
+	"info": {
+		"_postman_id": "adff1575-3da9-45be-ae3c-e1b864bbff1a",
+		"name": "mobile place order system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "24111672"
+	},
+	"item": [
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/customers?page=1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"customers"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success get all",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/customers?page=1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"customers"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "5",
+											"disabled": true
+										},
+										{
+											"key": "sortBy",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:08:44 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success fetch all customers\",\n    \"data\": [\n        {\n            \"customerId\": \"9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb\",\n            \"name\": \"susi\",\n            \"address\": \"jalan mangga\"\n        },\n        {\n            \"customerId\": \"123f26b8-7edf-4f45-bb90-78dd02c94418\",\n            \"name\": \"Budi\",\n            \"address\": \"1246\"\n        },\n        {\n            \"customerId\": \"c93a06c5-cb6a-4cf0-b03c-671a6bdec9cb\",\n            \"name\": \"andi\",\n            \"address\": \"jalan boulevard\"\n        },\n        {\n            \"customerId\": \"9920752c-3a3a-4587-b7da-dad4361a0fb3\",\n            \"name\": \"Kimi\",\n            \"address\": \"Jalan apel\"\n        },\n        {\n            \"customerId\": \"636ed510-2290-416c-86ec-c9cc8593b5a8\",\n            \"name\": \"timi\",\n            \"address\": \"jalan boulevard\"\n        }\n    ],\n    \"pagination\": {\n        \"currentPage\": 1,\n        \"size\": 10,\n        \"totalPages\": 1,\n        \"totalResults\": 5\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "find by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BASE_URL}}/customers/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb"
+					},
+					"response": [
+						{
+							"name": "success find by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{BASE_URL}}/customers/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:13:46 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success find customer\",\n    \"data\": {\n        \"customerId\": \"9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb\",\n        \"name\": \"susi\",\n        \"address\": \"jalan mangga\"\n    },\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"andi\",\r\n    \"address\": \"jalan boulevard\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/customers"
+					},
+					"response": [
+						{
+							"name": "success create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"timi\",\r\n    \"address\": \"jalan boulevard\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/customers"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:07:45 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success create product type\",\n    \"data\": {\n        \"customerId\": \"636ed510-2290-416c-86ec-c9cc8593b5a8\",\n        \"name\": \"timi\",\n        \"address\": \"jalan boulevard\"\n    },\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Kimi\",\r\n    \"address\": \"Jalan apel\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/customers/9920752c-3a3a-4587-b7da-dad4361a0fb3"
+					},
+					"response": [
+						{
+							"name": "success update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Kimi\",\r\n    \"address\": \"Jalan apel\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/customers/9920752c-3a3a-4587-b7da-dad4361a0fb3"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:16:48 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success update customer\",\n    \"data\": {\n        \"customerId\": \"9920752c-3a3a-4587-b7da-dad4361a0fb3\",\n        \"name\": \"Kimi\",\n        \"address\": \"Jalan apel\"\n    },\n    \"pagination\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "product types",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/product-types",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"product-types"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "book",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "name_asc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success get all",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/product-types",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"product-types"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "book",
+											"disabled": true
+										},
+										{
+											"key": "sortBy",
+											"value": "name_asc",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:19:54 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success fetch all product types\",\n    \"data\": [\n        {\n            \"productTypeId\": 6,\n            \"productTypeName\": \"Book\"\n        },\n        {\n            \"productTypeId\": 4,\n            \"productTypeName\": \"Food\"\n        },\n        {\n            \"productTypeId\": 7,\n            \"productTypeName\": \"Furnitures\"\n        },\n        {\n            \"productTypeId\": 3,\n            \"productTypeName\": \"Laptop\"\n        },\n        {\n            \"productTypeId\": 8,\n            \"productTypeName\": \"Toys\"\n        },\n        {\n            \"productTypeId\": 5,\n            \"productTypeName\": \"Vehicle\"\n        }\n    ],\n    \"pagination\": {\n        \"currentPage\": 1,\n        \"size\": 10,\n        \"totalPages\": 1,\n        \"totalResults\": 6\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "find by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BASE_URL}}/product-types/700"
+					},
+					"response": [
+						{
+							"name": "success find by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{BASE_URL}}/product-types/7"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:21:45 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success find product type\",\n    \"data\": {\n        \"productTypeId\": 7,\n        \"productTypeName\": \"Furnitures\"\n    },\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Toys\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/product-types"
+					},
+					"response": [
+						{
+							"name": "success create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Toys\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/product-types"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:18:25 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success create product type\",\n    \"data\": {\n        \"productTypeId\": 8,\n        \"productTypeName\": \"Toys\"\n    },\n    \"pagination\": null\n}"
+						},
+						{
+							"name": "already exist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Toys\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/product-types"
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:18:37 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Product type already exists\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Bag\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/product-types/7"
+					},
+					"response": [
+						{
+							"name": "already exists",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Furnitures\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/product-types/7"
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:23:22 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Product type already exists\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						},
+						{
+							"name": "success update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Bag\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/product-types/7"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:23:51 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success update product type\",\n    \"data\": {\n        \"productTypeId\": 7,\n        \"productTypeName\": \"Bag\"\n    },\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{BASE_URL}}/product-types/8"
+					},
+					"response": [
+						{
+							"name": "not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "{{BASE_URL}}/product-types/100"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:26:03 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Product type not found\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						},
+						{
+							"name": "used by another product",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "{{BASE_URL}}/product-types/7"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:26:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Product type is used by product\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "{{BASE_URL}}/product-types/8"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:26:28 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success delete product type\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "macbook",
+									"disabled": true
+								},
+								{
+									"key": "productTypeId",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "lte:20000000,gte:10000000",
+									"disabled": true
+								},
+								{
+									"key": "stock",
+									"value": "gt:25",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success get all",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/products",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "macbook",
+											"disabled": true
+										},
+										{
+											"key": "productTypeId",
+											"value": "3",
+											"disabled": true
+										},
+										{
+											"key": "price",
+											"value": "lte:20000000,gte:10000000",
+											"disabled": true
+										},
+										{
+											"key": "stock",
+											"value": "gt:25",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:38:20 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success fetch all products\",\n    \"data\": [\n        {\n            \"productId\": \"ed542221-88b2-4ff3-8561-ec15232d2fdf\",\n            \"productName\": \"Zenix\",\n            \"productType\": {\n                \"productTypeId\": 5,\n                \"productTypeName\": \"Vehicle\"\n            },\n            \"stock\": 2,\n            \"price\": 210000000\n        },\n        {\n            \"productId\": \"ae36811a-9fac-4567-86c5-376822924b87\",\n            \"productName\": \"Macbook\",\n            \"productType\": {\n                \"productTypeId\": 3,\n                \"productTypeName\": \"Laptop\"\n            },\n            \"stock\": 48,\n            \"price\": 12000000\n        },\n        {\n            \"productId\": \"22f8b870-426e-410e-a949-b2b59f5dc355\",\n            \"productName\": \"Dining Chair\",\n            \"productType\": {\n                \"productTypeId\": 7,\n                \"productTypeName\": \"Bag\"\n            },\n            \"stock\": 14,\n            \"price\": 210000\n        },\n        {\n            \"productId\": \"50ce757b-6690-4d47-ba5d-4159884672d8\",\n            \"productName\": \"Supra\",\n            \"productType\": {\n                \"productTypeId\": 5,\n                \"productTypeName\": \"Vehicle\"\n            },\n            \"stock\": 1,\n            \"price\": 18000000\n        },\n        {\n            \"productId\": \"94088092-ffa4-4e0d-862f-0de2b31ed1de\",\n            \"productName\": \"Dining Table\",\n            \"productType\": {\n                \"productTypeId\": 7,\n                \"productTypeName\": \"Bag\"\n            },\n            \"stock\": 15,\n            \"price\": 210000\n        },\n        {\n            \"productId\": \"98d55807-ea77-4f41-a8ef-cc9fc97a0687\",\n            \"productName\": \"Dining Table\",\n            \"productType\": {\n                \"productTypeId\": 7,\n                \"productTypeName\": \"Bag\"\n            },\n            \"stock\": 0,\n            \"price\": 210000\n        }\n    ],\n    \"pagination\": {\n        \"currentPage\": 1,\n        \"size\": 10,\n        \"totalPages\": 1,\n        \"totalResults\": 6\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "find by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BASE_URL}}/products/ed542221-88b2-4ff3-8561-ec15232d2fdf"
+					},
+					"response": [
+						{
+							"name": "success find",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{BASE_URL}}/products/ed542221-88b2-4ff3-8561-ec15232d2fdf"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:43:41 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success find product\",\n    \"data\": {\n        \"productId\": \"ed542221-88b2-4ff3-8561-ec15232d2fdf\",\n        \"productName\": \"Zenix\",\n        \"productType\": {\n            \"productTypeId\": 5,\n            \"productTypeName\": \"Vehicle\"\n        },\n        \"stock\": 2,\n        \"price\": 210000000\n    },\n    \"pagination\": null\n}"
+						},
+						{
+							"name": "product not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{BASE_URL}}/products/1"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:43:58 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Product not found\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Dining Table\",\r\n    \"productTypeId\": 9,\r\n    \"stock\": 15,\r\n    \"price\": 210000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/products"
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Dining Table\",\r\n    \"productTypeId\": 7,\r\n    \"stock\": 15,\r\n    \"price\": 210000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/products"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:33:39 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success create product\",\n    \"data\": {\n        \"productId\": \"94088092-ffa4-4e0d-862f-0de2b31ed1de\",\n        \"productName\": \"Dining Table\",\n        \"productType\": {\n            \"productTypeId\": 7,\n            \"productTypeName\": \"Bag\"\n        },\n        \"stock\": 15,\n        \"price\": 210000\n    },\n    \"pagination\": null\n}"
+						},
+						{
+							"name": "invalid price",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Dining Table\",\r\n    \"productTypeId\": 7,\r\n    \"stock\": 15,\r\n    \"price\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/products"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:37:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"price: price must be at least 1\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						},
+						{
+							"name": "product type not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Dining Table\",\r\n    \"productTypeId\": 9,\r\n    \"stock\": 15,\r\n    \"price\": 210000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/products"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:37:51 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Product type not found\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Zenix\",\r\n    \"productTypeId\": 5,\r\n    \"stock\": 15,\r\n    \"price\": 8000000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/products/ed542221-88b2-4ff3-8561-ec15232d2fdf"
+					},
+					"response": [
+						{
+							"name": "not found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Thinkpad\",\r\n    \"productTypeId\": 3,\r\n    \"stock\": 20,\r\n    \"price\": 8000000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/products/06c708c1-02cd-4389-a563-ab96c12b36d9"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:49:05 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Product not found\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Zenix\",\r\n    \"productTypeId\": 5,\r\n    \"stock\": 15,\r\n    \"price\": 8000000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/products/ed542221-88b2-4ff3-8561-ec15232d2fdf"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:49:48 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success update product\",\n    \"data\": {\n        \"productId\": \"ed542221-88b2-4ff3-8561-ec15232d2fdf\",\n        \"productName\": \"Zenix\",\n        \"productType\": {\n            \"productTypeId\": 5,\n            \"productTypeName\": \"Vehicle\"\n        },\n        \"stock\": 15,\n        \"price\": 8000000\n    },\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{BASE_URL}}/products/98d55807-ea77-4f41-a8ef-cc9fc97a0687"
+					},
+					"response": [
+						{
+							"name": "not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "{{BASE_URL}}/products/06c708c1-02cd-4389-a563-ab96c12b36d9"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:50:02 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Product not found\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "{{BASE_URL}}/products/98d55807-ea77-4f41-a8ef-cc9fc97a0687"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:50:25 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success delete product\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "carts",
+			"item": [
+				{
+					"name": "get customer carts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BASE_URL}}/carts/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb"
+					},
+					"response": [
+						{
+							"name": "success get",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{BASE_URL}}/carts/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 03:00:09 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success find cart\",\n    \"data\": {\n        \"cartId\": \"d9383752-ecb2-4460-9a43-4a01b7981f3c\",\n        \"customer\": {\n            \"customerId\": \"9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb\",\n            \"name\": \"susi\",\n            \"address\": \"jalan mangga\"\n        },\n        \"items\": [\n            {\n                \"cartItemId\": \"7e07dc4c-e9fc-4104-a7eb-045315886c9c\",\n                \"productId\": \"50ce757b-6690-4d47-ba5d-4159884672d8\",\n                \"productName\": \"Supra\",\n                \"productType\": \"Vehicle\",\n                \"quantity\": 1,\n                \"price\": 18000000,\n                \"totalPrice\": 18000000\n            }\n        ]\n    },\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Add product to cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"50ce757b-6690-4d47-ba5d-4159884672d8\",\r\n    \"quantity\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/carts/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb"
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": \"50ce757b-6690-4d47-ba5d-4159884672d8\",\r\n    \"quantity\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/carts/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:54:30 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success add product to cart\",\n    \"data\": {\n        \"cartId\": \"d9383752-ecb2-4460-9a43-4a01b7981f3c\",\n        \"customer\": {\n            \"customerId\": \"9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb\",\n            \"name\": \"susi\",\n            \"address\": \"jalan mangga\"\n        },\n        \"items\": [\n            {\n                \"cartItemId\": \"7e07dc4c-e9fc-4104-a7eb-045315886c9c\",\n                \"productId\": \"50ce757b-6690-4d47-ba5d-4159884672d8\",\n                \"productName\": \"Supra\",\n                \"productType\": \"Vehicle\",\n                \"quantity\": 1,\n                \"price\": 18000000,\n                \"totalPrice\": 18000000\n            }\n        ]\n    },\n    \"pagination\": null\n}"
+						},
+						{
+							"name": "invalid quantity",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": \"50ce757b-6690-4d47-ba5d-4159884672d8\",\r\n    \"quantity\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/carts/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:58:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"quantity: quantity must be at least 1\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						},
+						{
+							"name": "invalid product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": \"50ce757b-6690-4d47-ba5d-4159884672d9\",\r\n    \"quantity\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/carts/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:59:16 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Product not found\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						},
+						{
+							"name": "customer not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": \"50ce757b-6690-4d47-ba5d-4159884672d8\",\r\n    \"quantity\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/carts/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cc"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 02:59:47 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Customer not found\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "update product cart item",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"50ce757b-6690-4d47-ba5d-4159884672d8\",\r\n    \"quantity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/carts/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb"
+					},
+					"response": [
+						{
+							"name": "not enough stock",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": \"50ce757b-6690-4d47-ba5d-4159884672d8\",\r\n    \"quantity\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/carts/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 03:03:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Not enough product stock for product: Supra\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						},
+						{
+							"name": "product not found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": \"50ce757b-6690-4d47-ba5d-4159884672da\",\r\n    \"quantity\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/carts/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 03:03:57 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Product not found\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "delete all item in cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{BASE_URL}}/carts/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb"
+					},
+					"response": [
+						{
+							"name": "already empty",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "{{BASE_URL}}/carts/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 03:11:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Cart item already empty\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						},
+						{
+							"name": "success clear",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "{{BASE_URL}}/carts/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 03:11:54 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success clear all cart item\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "remove item on cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{BASE_URL}}/carts/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb/items/d6c140c6-f4da-4b1e-8386-b70099ec603a"
+					},
+					"response": [
+						{
+							"name": "cart item not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "{{BASE_URL}}/carts/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb/items/0c5d6127-1e6d-40b0-bf1d-ce60c34ecdcf"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 03:06:50 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Cart item not found\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": "{{BASE_URL}}/carts/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb/items/7e07dc4c-e9fc-4104-a7eb-045315886c9c"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 03:08:38 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success remove cart item\",\n    \"data\": {\n        \"cartId\": \"d9383752-ecb2-4460-9a43-4a01b7981f3c\",\n        \"customer\": {\n            \"customerId\": \"9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb\",\n            \"name\": \"susi\",\n            \"address\": \"jalan mangga\"\n        },\n        \"items\": [\n            {\n                \"cartItemId\": \"7e07dc4c-e9fc-4104-a7eb-045315886c9c\",\n                \"productId\": \"50ce757b-6690-4d47-ba5d-4159884672d8\",\n                \"productName\": \"Supra\",\n                \"productType\": \"Vehicle\",\n                \"quantity\": 1,\n                \"price\": 18000000,\n                \"totalPrice\": 18000000\n            }\n        ]\n    },\n    \"pagination\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "get customer orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/orders/customer/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"orders",
+								"customer",
+								"9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "succcess",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/orders/customer/9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"orders",
+										"customer",
+										"9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "sortBy",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 03:13:08 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success fetch all orders\",\n    \"data\": [\n        {\n            \"orderId\": \"9a9ea65c-f084-4286-a999-66166019b1d6\",\n            \"customer\": {\n                \"customerId\": \"9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb\",\n                \"name\": \"susi\",\n                \"address\": \"jalan mangga\"\n            },\n            \"grandTotal\": 54000000,\n            \"items\": [\n                {\n                    \"productId\": \"ae36811a-9fac-4567-86c5-376822924b87\",\n                    \"productName\": \"Macbook\",\n                    \"quantity\": 3,\n                    \"unitPrice\": 12000000,\n                    \"totalPrice\": 36000000\n                },\n                {\n                    \"productId\": \"50ce757b-6690-4d47-ba5d-4159884672d8\",\n                    \"productName\": \"Supra\",\n                    \"quantity\": 1,\n                    \"unitPrice\": 18000000,\n                    \"totalPrice\": 18000000\n                }\n            ],\n            \"orderDate\": \"2025-01-06T00:04:59.458Z\"\n        }\n    ],\n    \"pagination\": {\n        \"currentPage\": 1,\n        \"size\": 1,\n        \"totalPages\": 6,\n        \"totalResults\": 6\n    }\n}"
+						},
+						{
+							"name": "customer not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/orders/customer/9d1c3d69-50c4-49f9-af9b-5dd14a8df4ca",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"orders",
+										"customer",
+										"9d1c3d69-50c4-49f9-af9b-5dd14a8df4ca"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "sortBy",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 03:19:33 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Customer not found\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "get order detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BASE_URL}}/orders/9a9ea65c-f084-4286-a999-66166019b1d6"
+					},
+					"response": []
+				},
+				{
+					"name": "add orders",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\": \"9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb\",\r\n    \"cartItemId\": [\r\n        \"a841afb6-23ac-42c1-9e11-8f9e9ae98dac\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/orders",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "customer or cart not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customerId\": \"9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb\",\r\n    \"cartItemId\": [\r\n        \"d0c7ee87-f916-414a-9143-366f18b41b42\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/orders",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "10",
+											"disabled": true
+										},
+										{
+											"key": "sortBy",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 03:22:16 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Mismatch between customer and cart item\",\n    \"data\": null,\n    \"pagination\": null\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customerId\": \"9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb\",\r\n    \"cartItemId\": [\r\n        \"a841afb6-23ac-42c1-9e11-8f9e9ae98dac\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/orders",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "10",
+											"disabled": true
+										},
+										{
+											"key": "sortBy",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 03:22:33 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success create order\",\n    \"data\": {\n        \"orderId\": \"9ee6c517-4bd2-48f4-9634-05ad16d25fed\",\n        \"customer\": {\n            \"customerId\": \"9d1c3d69-50c4-49f9-af9b-5dd14a8df4cb\",\n            \"name\": \"susi\",\n            \"address\": \"jalan mangga\"\n        },\n        \"grandTotal\": 18000000,\n        \"items\": [\n            {\n                \"productId\": \"50ce757b-6690-4d47-ba5d-4159884672d8\",\n                \"productName\": \"Supra\",\n                \"quantity\": 1,\n                \"unitPrice\": 18000000,\n                \"totalPrice\": 18000000\n            }\n        ],\n        \"orderDate\": \"2025-01-06T03:22:33.804Z\"\n    },\n    \"pagination\": null\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
