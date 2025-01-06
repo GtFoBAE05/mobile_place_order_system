@@ -12,7 +12,7 @@ public class OrderMapper {
                         OrderItemMapper::toResponse
                 ).toList())
                 .grandTotal(order.getGrandTotal())
-                .orderDate(order.getCreatedAt().toString())
+                .orderDate(order.getCreatedAt().toInstant().toString())
                 .build();
     }
 }
