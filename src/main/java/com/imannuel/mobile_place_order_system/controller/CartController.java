@@ -60,8 +60,8 @@ public class CartController {
             @PathVariable(name = "customerId") String customerId,
             @PathVariable(name = "cartItemId") String cartItemId
     ) {
-        CartResponse cartResponse = customerCartService.removeItemFromCart(customerId, cartItemId);
+        customerCartService.removeItemFromCart(customerId, cartItemId);
         return ResponseMapper.toCommonResponse(true, HttpStatus.OK,
-                MessageConstants.CART_SUCCESS_REMOVE_ITEM, cartResponse);
+                MessageConstants.CART_SUCCESS_REMOVE_ITEM, null);
     }
 }
