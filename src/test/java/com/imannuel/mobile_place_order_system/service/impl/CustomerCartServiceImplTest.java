@@ -78,7 +78,7 @@ class CustomerCartServiceImplTest {
                 .cartItems(List.of())
                 .build();
         CartResponse expectedCartResponse = CartResponse.builder()
-                .id(cartId)
+                .cartId(cartId)
                 .items(List.of())
                 .build();
 
@@ -87,7 +87,7 @@ class CustomerCartServiceImplTest {
 
         CartResponse customerCart = customerCartService.getCustomerCart(customer.getId());
 
-        assertEquals(expectedCartResponse.getId(), customerCart.getId());
+        assertEquals(expectedCartResponse.getCartId(), customerCart.getCartId());
     }
 
     @Test

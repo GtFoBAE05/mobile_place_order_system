@@ -6,7 +6,7 @@ import com.imannuel.mobile_place_order_system.entity.CartItem;
 public class CartItemMapper {
     public static CartItemResponse toResponse(CartItem cartItem) {
         return CartItemResponse.builder()
-                .id(cartItem.getId())
+                .cartItemId(cartItem.getId())
                 .productId(cartItem.getProduct().getId())
                 .productName(cartItem.getProduct().getName())
                 .productType(cartItem.getProduct().getProductType().getName())

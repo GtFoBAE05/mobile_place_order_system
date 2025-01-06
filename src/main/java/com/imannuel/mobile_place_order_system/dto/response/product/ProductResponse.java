@@ -8,9 +8,9 @@ import lombok.Setter;
 @Setter
 @Builder
 public class ProductResponse {
-    private String id;
+    private String productId;
 
-    private String name;
+    private String productName;
 
     private ProductTypeResponse productType;
 

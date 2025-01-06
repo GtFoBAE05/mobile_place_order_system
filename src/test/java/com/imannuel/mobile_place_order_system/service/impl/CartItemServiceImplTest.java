@@ -316,6 +316,20 @@ class CartItemServiceImplTest {
     }
 
     @Test
+    void shouldThrowErrorWhenClearAllItemFromCartAlreadyEmpty() {
+        Cart cart = Cart.builder()
+                .id(UUID.randomUUID().toString())
+                .build();
+
+        Mockito.when(cartItemRepository.findByCart(cart)).thenReturn(List.of());
+
+        ResponseStatusException exception = assertThrows(ResponseStatusException.class,
+                () -> cartItemService.clearAllItemFromCart(cart));
+
+        assertEquals(MessageConstants.CART_ITEM_ALREADY_EMPTY, exception.getReason());
+    }
+
+    @Test
     void shouldDeleteCartItemWhenDeleteCartItem() {
         String cartItemId = UUID.randomUUID().toString();
         Cart cart = Cart.builder()

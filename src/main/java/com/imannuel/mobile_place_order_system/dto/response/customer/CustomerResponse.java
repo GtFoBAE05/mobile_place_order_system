@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Builder
 public class CustomerResponse {
-    private String id;
+    private String customerId;
 
     private String name;
 

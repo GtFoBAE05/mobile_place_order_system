@@ -49,7 +49,7 @@ class ProductTypeServiceImplTest {
 
         ProductTypeResponse productTypeResponse = productTypeService.addProductType(expectedProductTypeRequest);
 
-        assertEquals(expectedProductTypeRequest.getName(), productTypeResponse.getName());
+        assertEquals(expectedProductTypeRequest.getName(), productTypeResponse.getProductTypeName());
         Mockito.verify(productTypeRepository, Mockito.times(1))
                 .existsByDeletedFalseAndNameEqualsIgnoreCase(Mockito.anyString());
     }
@@ -121,8 +121,8 @@ class ProductTypeServiceImplTest {
 
         ProductTypeResponse productTypeResponse = productTypeService.findActiveProductTypeByIdResponse(productTypeId);
 
-        assertEquals(expectedProductType.getId(), productTypeResponse.getId());
-        assertEquals(expectedProductType.getName(), productTypeResponse.getName());
+        assertEquals(expectedProductType.getId(), productTypeResponse.getProductTypeId());
+        assertEquals(expectedProductType.getName(), productTypeResponse.getProductTypeName());
         Mockito.verify(productTypeRepository, Mockito.times(1))
                 .findByIdAndDeletedFalse(Mockito.anyInt());
     }
@@ -171,7 +171,7 @@ class ProductTypeServiceImplTest {
 
         ProductTypeResponse productTypeResponse = productTypeService.updateProductById(productTypeId, productTypeRequest);
 
-        assertEquals(productTypeRequest.getName(), productTypeResponse.getName());
+        assertEquals(productTypeRequest.getName(), productTypeResponse.getProductTypeName());
         Mockito.verify(productTypeRepository, Mockito.times(1))
                 .saveAndFlush(Mockito.any(ProductType.class));
     }

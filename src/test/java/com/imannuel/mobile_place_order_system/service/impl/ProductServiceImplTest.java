@@ -121,8 +121,8 @@ class ProductServiceImplTest {
 
         ProductResponse productResponse = productService.findActiveProductByIdResponse(productId);
 
-        assertEquals(expectedProduct.getId(), productResponse.getId());
-        assertEquals(expectedProduct.getName(), productResponse.getName());
+        assertEquals(expectedProduct.getId(), productResponse.getProductId());
+        assertEquals(expectedProduct.getName(), productResponse.getProductName());
         assertEquals(expectedProduct.getStock(), productResponse.getStock());
         assertEquals(expectedProduct.getPrice(), productResponse.getPrice());
         Mockito.verify(productRepository, Mockito.times(1))
@@ -192,7 +192,7 @@ class ProductServiceImplTest {
 
         ProductResponse productResponse = productService.updateProductById(productId, productRequest);
 
-        assertEquals(productRequest.getName(), productResponse.getName());
+        assertEquals(productRequest.getName(), productResponse.getProductName());
         assertEquals(productRequest.getStock(), productResponse.getStock());
         assertEquals(productRequest.getPrice(), productResponse.getPrice());
         Mockito.verify(productRepository, Mockito.times(1))

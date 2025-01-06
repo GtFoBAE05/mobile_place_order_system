@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Builder
 public class ProductTypeResponse {
-    private Integer id;
+    private Integer productTypeId;
 
-    private String name;
+    private String productTypeName;
 }

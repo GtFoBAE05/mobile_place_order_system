@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 @Builder
 public class CartResponse {
-    private String id;
+    private String cartId;
 
     private CustomerResponse customer;
 
