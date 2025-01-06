@@ -63,11 +63,9 @@ public class CustomerCartServiceImpl implements CustomerCartService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public CartResponse removeItemFromCart(String customerId, String cartItemId) {
+    public void removeItemFromCart(String customerId, String cartItemId) {
         Customer customer = customerService.findCustomerById(customerId);
         Cart cart = cartService.getCart(customer);
         cartItemService.removeItemFromCart(cartItemId, cart);
-
-        return CartMapper.toResponse(cart);
     }
 }

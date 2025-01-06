@@ -12,5 +12,5 @@ public interface CustomerCartService {
 
     void clearAllCartItem(String customerId);
 
-    CartResponse removeItemFromCart(String customerId, String cartItemId);
+    void removeItemFromCart(String customerId, String cartItemId);
 }
